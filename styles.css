@@ -1,0 +1,26 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    grid-template-rows: 1fr 5fr 1fr;
+    height: 100%;
+}
+
+.sidebar {
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+    background-color: blueviolet;
+    color: white;
+    padding: 20px;
+    
+}
+
+.content {
+    padding: 40px 40px;
+}
+
+.card {
+    min-height: 200px;
+    min-width: 200px;
+    max-width: 500px;
+    background-color: aqua;
+}
