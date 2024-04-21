@@ -17,18 +17,18 @@
                 <input type="text" id="form-author">
                 <label for="form-pages">Pages read</label>
                 <input type="number" id="form-pages">
-                <label for="form-read">Did you read it?</label>
-                <input type="text" id="form-read">
+                <fieldset>
+                    <legend>Did you read it?</legend>
+                    <input type="radio" id="read-yes" name="read">
+                    <label for="read-yes">Yes</label>
+                    <input type="radio" id="read-no" name="read">
+                    <label for="read-no">No</label>
+                </fieldset>
+                <input type="submit" value="Add book to library"/>
             </form>
         </div>
         <div class="content">
-            <div class="card">
-                <p class="display-title"></p>
-                <p class="display-author"></p>
-                <p class="display-pages"></p>
-                <p class="display-read"></p>
                 <p class="empty-display-message">Add a book to display it here...</p>
-            </div>
         </div>
     </div>
 </body>

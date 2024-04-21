@@ -1,14 +1,13 @@
 const myLibrary = [
-    {
-        title: 'lorem', author: 'ipsum', pages: 30, read: true,
-    }
+    { title: '"The Catcher in the Rye"', author: 'J.D. Salinger', pages: 224, read: true },
+
+    { title: '"The Great Gatsby"', author: 'F. Scott Fitzgerald', pages: 180, read: false },
+
+    { title: '"To Kill a Mockingbird"', author: 'Harper Lee', pages: 336, read: false }
 ];
-const cards = document.querySelectorAll('.card');
-const displayTitle = document.querySelector('.display-title');
-const displayAuthor = document.querySelector('.display-author');
-const displayPages = document.querySelector('.display-pages');
-const displayRead = document.querySelector('.display-read');
+
 const emptyDisplayMessage = document.querySelector('.empty-display-message');
+const content = document.querySelector('.content');
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -20,33 +19,42 @@ function Book(title, author, pages, read) {
             return `The ${title} by ${author}, ${pages} pages, already read`
         } else {
             return `The ${title} by ${author}, ${pages} pages, not read yet`
-        }
-    }
+        };
+    };
 };
 
 function addBookToLibrary (userTitle, userAuthor, userPages, userRead) {
     const addedBook = new Book(userTitle, userAuthor, userPages, userRead);
-    myLibrary.push(addedBook);
+    myLibrary.unshift(addedBook);
 };
 
 function displayBooks () {
     for (element of myLibrary) {
-        if (element.title !== undefined) {
-            emptyDisplayMessage.textContent = '';
+        const card = document.createElement('div');
+        card.classList.toggle('card');
+        const paraTitle = document.createElement('p');
+        const paraAuthor = document.createElement('p');
+        const paraPages = document.createElement('p');
+        const paraRead = document.createElement('p');
+
+        paraTitle.textContent = element.title;
+        paraAuthor.textContent = element.author;
+        paraPages.textContent = `${element.pages} pages`;
+        if (element.read === true) {
+            paraRead.textContent = 'Read';
+        } else if (element.read === false) {
+            paraRead.textContent = 'Not read yet';
         }
-        displayTitle.textContent = element.title;
-        displayAuthor.textContent = element.author;
-        displayPages.textContent = element.pages;
-        displayRead.textContent = element.read;
+
+        card.appendChild(paraTitle);
+        card.appendChild(paraAuthor);
+        card.appendChild(paraPages);
+        card.appendChild(paraRead);
+        content.appendChild(card);
     }
+    if (myLibrary[0].title !== undefined) {
+        emptyDisplayMessage.style.display = 'none';
+    };
 };
 
-displayBooks ()
-
-/* const userTitle = 'lorem';
-const userAuthor = 'lorem';
-const userPages = 10;
-const userRead = true;
-addBookToLibrary ('lorem', 'lorem', 10, true)
-displayBooks ()
-*/
+displayBooks ();
