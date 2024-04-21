@@ -8,6 +8,19 @@ const myLibrary = [
 
 const emptyDisplayMessage = document.querySelector('.empty-display-message');
 const content = document.querySelector('.content');
+const submitButton = document.querySelector('#submit-button');
+const formTitle = document.querySelector('#form-title')
+const formAuthor = document.querySelector('#form-author')
+const formPages = document.querySelector('#form-pages')
+const readYes = document.querySelector('#read-yes')
+const readNo = document.querySelector('#read-no')
+
+submitButton.addEventListener('click', formSubmition);
+
+function formSubmition(event) {
+    addBookToLibrary (formTitle.value, formAuthor.value, formPages.value, formTitle.value);
+    event.preventDefault();
+};
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -26,6 +39,7 @@ function Book(title, author, pages, read) {
 function addBookToLibrary (userTitle, userAuthor, userPages, userRead) {
     const addedBook = new Book(userTitle, userAuthor, userPages, userRead);
     myLibrary.unshift(addedBook);
+    displayBooks ();
 };
 
 function displayBooks () {
@@ -56,5 +70,3 @@ function displayBooks () {
         emptyDisplayMessage.style.display = 'none';
     };
 };
-
-displayBooks ();
