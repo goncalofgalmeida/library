@@ -23,7 +23,8 @@ fieldset {
     margin: 4px 0 30px 0;
 }
 
-.content {
+.content
+.cards-container {
     padding: 40px 40px;
     display: flex;
     flex-wrap: wrap;

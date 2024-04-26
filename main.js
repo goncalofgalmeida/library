@@ -5,9 +5,9 @@ const myLibrary = [
 
     { title: '"To Kill a Mockingbird"', author: 'Harper Lee', pages: 336, read: false }
 ];
-
 const emptyDisplayMessage = document.querySelector('.empty-display-message');
-const content = document.querySelector('.content');
+const cardsContainer = document.querySelector('.cards-container');
+const form = document.querySelector('#add-book-form');
 const submitButton = document.querySelector('#submit-button');
 const formTitle = document.querySelector('#form-title')
 const formAuthor = document.querySelector('#form-author')
@@ -15,11 +15,12 @@ const formPages = document.querySelector('#form-pages')
 const readYes = document.querySelector('#read-yes')
 const readNo = document.querySelector('#read-no')
 
-submitButton.addEventListener('click', formSubmition);
-
-function formSubmition(event) {
+function formSubmition() {
     addBookToLibrary (formTitle.value, formAuthor.value, formPages.value, formTitle.value);
-    event.preventDefault();
+    formTitle.value = null;
+    formAuthor.value = null;
+    formPages.value = null;
+    formTitle.value = null;
 };
 
 function Book(title, author, pages, read) {
@@ -42,7 +43,14 @@ function addBookToLibrary (userTitle, userAuthor, userPages, userRead) {
     displayBooks ();
 };
 
+function removeAllCards () {
+    while (cardsContainer.lastElementChild) {
+        cardsContainer.removeChild(cardsContainer.lastElementChild);
+      }
+}
+
 function displayBooks () {
+    removeAllCards ();
     for (element of myLibrary) {
         const card = document.createElement('div');
         card.classList.toggle('card');
@@ -64,9 +72,14 @@ function displayBooks () {
         card.appendChild(paraAuthor);
         card.appendChild(paraPages);
         card.appendChild(paraRead);
-        content.appendChild(card);
+        cardsContainer.appendChild(card);
     }
-    if (myLibrary[0].title !== undefined) {
+    if (myLibrary[0] !== undefined) {
         emptyDisplayMessage.style.display = 'none';
     };
 };
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    formSubmition();
+});
