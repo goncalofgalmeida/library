@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
+    <title>Personal Library</title>
     <link rel="stylesheet" href="styles.css">
     <script src="main.js" defer></script>
 </head>
@@ -17,13 +17,13 @@
                 <input type="text" id="form-author" required>
                 <label for="form-pages">Pages read</label>
                 <input type="number" id="form-pages" required>
-                <fieldset>
-                    <legend>Did you read it?</legend>
-                    <input type="radio" id="read-yes" value="read-yes" name="read">
-                    <label for="read-yes">Yes</label>
-                    <input type="radio" id="read-no" value="read-no" name="read">
-                    <label for="read-no">No</label>
-                </fieldset>
+                <label for="reading-status">Reading Status</label>
+
+                <select name="reading-status" id="reading-status">
+                <option value="not-read-yet">Not read yet</option>
+                <option value="currently-reading">Currently reading</option>
+                <option value="Read">Read</option>
+                </select>
                 <input type="submit" id="submit-button" value="Add book to library"/>
             </form>
         </div>
