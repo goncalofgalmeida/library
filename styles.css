@@ -1,6 +1,11 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
 .sidebar {
